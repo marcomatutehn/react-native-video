@@ -17,7 +17,6 @@ import {
 } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
@@ -25,6 +24,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Home from './src/screens/containers/home';
+import Header from './src/sections/components/header';
+import SuggestionList from './src/videos/containers/suggestion-list'
 
 const App: () => React$Node = () => {
   return (
@@ -34,9 +35,11 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
+          <Header/>
           <Home>
-            <Text>Hola</Text>
-            <Text>Que tal?</Text>
+            <Text>Buscador</Text>
+            <Text>Categorias</Text>
+            <SuggestionList />
           </Home>
         </ScrollView>
       </SafeAreaView>
