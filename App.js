@@ -31,8 +31,7 @@ const App: () => React$Node = () => {
   useEffect(() => {
     (async function getMovies() {
       try {
-        let response = await API.getSuggestion(10);
-        console.log('holi');
+        let response = await API.getSuggestion(5);
         console.log(response);
       } catch (e) {
         console.error(e);
