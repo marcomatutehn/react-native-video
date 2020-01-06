@@ -6,28 +6,53 @@
  * @flow
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
   Text,
   StatusBar,
 } from 'react-native';
 
 import {
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list'
+import API from './utils/api';
+
+
 
 const App: () => React$Node = () => {
+
+  useEffect(() => {
+    (async function getMovies() {
+      try {
+        let response = await API.getSuggestion(10);
+        console.log('holi');
+        console.log(response);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
+
+  /*
+  useEffect(() => {
+    const fetchData = async () => {
+      const movies = await API.getSuggestion(10);
+      console.log('holi');
+      console.log(movies);
+    };
+    return () => {
+      fetchData();
+    };
+  });
+*/
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -39,7 +64,8 @@ const App: () => React$Node = () => {
           <Home>
             <Text>Buscador</Text>
             <Text>Categorias</Text>
-            <SuggestionList />
+            <SuggestionList
+            />
           </Home>
         </ScrollView>
       </SafeAreaView>
